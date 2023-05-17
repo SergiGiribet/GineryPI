@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilitos.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="calendar"></div>
+    <div class="chart-container">
+      <canvas id="myChart"></canvas>
+    </div>
+    <script src="index.js"></script>
+    <script>
+      setInterval(() => {
+        fetch("http://127.0.0.1:5500/graph/data.json")
+          .then((response) => response.json())
+          .then((json) => {
+            console.log(json);
+            longitud = json.length;
+
+            datos = [];
+            for (let i = 0; i < 60; i++) {
+              let posicion = longitud - 60 + i;
+              if (posicion >= 0) {
+                datos[i] = json[longitud - 60 + i].temperature;
+              }
+            }
+
+            etiquetas = [];
+            for (let i = 0; i < 60; i++) {
+              etiquetas[i] = i;
+            }
+
+            const chartData = {
+              labels: etiquetas,
+              datasets: [
+                {
+                  label: "Temperature over time",
+                  data: datos,
+                  backgroundColor: "rgba(255, 99, 132, 0.2)",
+                  borderColor: "rgba(255, 99, 132, 1)",
+                  borderWidth: 3,
+                  fill: true,
+                  tension: 0.4,
+                },
+              ],
+            };
+
+            const chartOptions = {
+              scales: {
+                y: {
+                  grid: {
+                    color: "rgba(255, 255, 255, 0.4)",
+                  },
+                },
+                x: {
+                  grid: {
+                    color: "rgba(255, 255, 255, 0.4)",
+                  },
+                },
+              },
+            };
+
+            const myChart = new Chart(document.getElementById("myChart"), {
+              type: "line",
+              data: chartData,
+              options: chartOptions,
+            });
+          });
+      }, 100);
+    </script>
+  </body>
+</html>
