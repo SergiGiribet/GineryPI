@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<title>GineRry Pi</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"/>
+	<link rel="icon" type="image/png" href="images/logogine.ico" />
+	<link rel="stylesheet" type="text/css" href="sytles.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+	<div class="dashboard">
+		<div class="card"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  color="blue" fill="currentColor" class="bi bi-clock icono" viewBox="0 0 16 16">
+            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+          </svg></span>
+			<div id="clock"></div>
+			<script>
+				function updateClock() {
+				  var now = new Date();
+				  var hours = now.getHours();
+				  var minutes = now.getMinutes().toString().padStart(2, '0'); // agrega un cero al principio si tiene menos de dos dígitos
+				  var seconds = now.getSeconds();
+				  var timeString = hours + ":" + minutes;
+				  document.getElementById("clock").innerHTML = timeString;
+				}
+		  
+				setInterval(updateClock, 1000);
+			  </script>
+		</div>
+		<div class="card"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" color="blue" fill="currentColor" class="bi bi-thermometer-half icono" viewBox="0 0 16 16">
+            <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415z"/>
+            <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1z"/>
+          </svg></span>
+			<div class="temp" id="tempActual"><sup>&deg;</sup></div>
+		</div>
+		<div class="card calendar"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" color="blue" fill="currentColor" class="bi bi-calendar-week icono" viewBox="0 0 16 16">
+            <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+          </svg></span>
+			<table>
+				<tbody id="calendar-body"></tbody>
+			  </table>
+		  
+			  <script>
+				var today = new Date();
+				var year = today.getFullYear();
+				var month = today.getMonth();
+				var daysInMonth = new Date(year, month + 1, 0).getDate();
+				var monthName = [
+				  "Enero",
+				  "Febrero",
+				  "Marzo",
+				  "Abril",
+				  "Mayo",
+				  "Junio",
+				  "Julio",
+				  "Agosto",
+				  "Septiembre",
+				  "Octubre",
+				  "Noviembre",
+				  "Diciembre"
+				][month];
+			  
+				var calendarBody = document.getElementById("calendar-body");
+			  
+				var monthHeader = document.createElement("tr");
+				monthHeader.classList.add("month-header");
+				var monthNameCell = document.createElement("td");
+				monthNameCell.textContent = monthName + " " + year;
+				monthNameCell.setAttribute("colspan", 7);
+				monthHeader.appendChild(monthNameCell);
+				calendarBody.appendChild(monthHeader);
+			  
+				var dayNamesRow = document.createElement("tr");
+				dayNamesRow.classList.add("day-names-row");
+				for (var i = 0; i < 7; i++) {
+				  var dayNameCell = document.createElement("td");
+				  dayNameCell.textContent = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb","Dom"][i];
+				  dayNamesRow.appendChild(dayNameCell);
+				}
+				calendarBody.appendChild(dayNamesRow);
+			  
+				for (var i = 0; i < daysInMonth; i += 7) {
+				  var row = document.createElement("tr");
+			  
+				  for (var j = i; j < i + 7 && j < daysInMonth; j++) {
+					var cell = document.createElement("td");
+					cell.textContent = j + 1;
+					if (year === today.getFullYear() && month === today.getMonth() && j === today.getDate() - 1) {
+					  cell.classList.add("today");
+					} else if (new Date(year, month, j + 1) < today) {
+					  cell.classList.add("passed");
+					}
+					row.appendChild(cell);
+				  }
+			  
+				  calendarBody.appendChild(row);
+				}
+			  </script>
+			  
+			  
+		</div>
+	</div>
+	<div class="dashboard">
+		<div class="card inferior">
+			<div class="box">
+			<div class="percent">
+			  <div class="num">
+				<p id="tempMax"><span>º</span></p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+		<div class="card inferior">
+			<div class="box">
+			<div class="percent">
+			  <div class="num">
+				<p id="tempMin"><span>º</span></p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		
+		<div class="card inferior"><p id="pressio">Pressió</p></div>
+		<div class="card inferior grafica"><canvas id="myChart"><script>
+			fetch('http://raspberrypi.local/data.json')
+    .then((response) => response.json())
+    .then((json) => {
+        const temperatures = json.temperature;
+        const daysOfWeek = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+debugger;
+        // Crea un array con la temperatura máxima y mínima para cada día de la semana
+        const data = daysOfWeek.map((day, index) => {
+            const startIndex = index * 4;
+            const dayTemperatures = temperatures.slice(startIndex, startIndex + 4);
+            const maxTemperature = Math.max(...dayTemperatures);
+            const minTemperature = Math.min(...dayTemperatures);
+            return {day, maxTemperature, minTemperature};
+        });
+
+        // Crea un array con las etiquetas (días de la semana) y los datos de temperatura
+        const labels = data.map(d => d.day);
+        const maxTemperatures = data.map(d => d.maxTemperature);
+        const minTemperatures = data.map(d => d.minTemperature);
+
+        // Crea la gráfica de líneas utilizando Chart.js
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Máxima',
+                        data: maxTemperatures,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+						fill: true,
+						tension: 0.4,
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Mínima',
+                        data: minTemperatures,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+						fill:true,
+						tension: 0.4,
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        suggestedMin: Math.min(...minTemperatures) - 2,
+                        suggestedMax: Math.max(...maxTemperatures) + 2
+                    }
+                }
+            }
+        });
+    });
+
+		</script></canvas>
+		</div>
+	</div>
+
+	<script language="javascript">
+        fetch('http://raspberrypi.local/data.json')
+        .then((response) => response.json())
+        .then((json) => {
+                let temperatures = json.temperature
+                let pressures = json.pressure
+                document.getElementById('pressio').innerText = Math.floor(pressures[pressures.length - 1]) + ' hPa'
+                document.getElementById('tempActual').innerText = Math.floor(temperatures[temperatures.length - 1]) + ' °C'
+                temperatures.sort()
+                document.getElementById('tempMax').innerText = Math.floor(temperatures[temperatures.length - 1]) + ' °C'
+                document.getElementById('tempMin').innerText = Math.floor(temperatures[0]) + ' °C'
+
+                //innerHTML = '<strong>' + temperatures[temperatures.length - 1]  + '</strong>'
+
+                /*for (let temp of json.temperature) {
+
+                }*/
+        })
+
+setInterval(() => {
+    fetch('http://raspberrypi.local/data.json')
+        .then((response) => response.json())
+        .then((json) => {
+                let temperatures = json.temperature
+                let pressures = json.pressure
+                document.getElementById('pressio').innerText = Math.floor(pressures[pressures.length - 1]) + ' hPa'
+                document.getElementById('tempActual').innerText = Math.floor(temperatures[temperatures.length - 1]) + ' °C'
+                temperatures.sort()
+                document.getElementById('tempMax').innerText = Math.floor(temperatures[temperatures.length - 1]) + ' °C'
+                document.getElementById('tempMin').innerText = Math.floor(temperatures[0]) + ' °C'
+
+                //innerHTML = '<strong>' + temperatures[temperatures.length - 1]  + '</strong>'
+
+                /*for (let temp of json.temperature) {
+
+                }*/
+        })
+        }, 1000)
+        </script>
+
+</body>
+</html> 

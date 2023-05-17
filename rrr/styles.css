@@ -1,0 +1,93 @@
+
+.fila_superior{
+    position: fixed;
+    top: 0;
+    bottom: ;
+    left: 0;
+    right: 0;
+height: 50%;
+width: 100%;
+border: 1px solid black;
+background-color: yellow;
+}
+
+.fila_inferior{
+    position: fixed;
+    top: ;
+    bottom: 0;
+    left: 0;
+    right:0 ;
+height: 50%;
+width: 100%;
+border: 1px solid black;
+background-color: blue;
+}
+
+.superior_dreta{
+    position: fixed;
+    top: 0;
+    bottom: ;
+    left: ;
+    right: 0;
+height: 50%;
+width: 50%;
+background-color: black;
+}
+
+.superior_esquerra{
+    position: fixed;
+    top: 0;
+    bottom: ;
+    left: 0;
+    right: ;
+height: 50%;
+width: 50%;
+background-color: red;
+}
+
+.inferior_dreta{
+    position: fixed;
+    top: ;
+    bottom: 0;
+    left: ;
+    right:0 ;
+height: 50%;
+width: 50%;
+background-color: violet;
+}
+
+.inferior_esquerra{
+    position: fixed;
+    top: ;
+    bottom: 0;
+    left: 0;
+    right: ;
+height: 50%;
+width: 50%;
+background-color: green;
+}
+
+.sup_esq_esq{
+    position: relative;
+    height: 33.3%;
+    width: 33.3%;
+    background-color: beige;
+}
+
+.sup_esq_cent{
+    height: 33.3%;
+    width: 33.3%;
+    background-color: yellow;
+}
+
+.sup_esq_cent_inf{
+    height: 33.3%;
+    width: 33.3%;
+    background-color: brown;
+}
+
+.sup_esq_dret{
+    height: 33.3%;
+    width: 33.3%;
+    background-color: cyan;
+}

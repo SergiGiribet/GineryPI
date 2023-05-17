@@ -1,0 +1,105 @@
+@charset "utf-8";
+/* CSS Document */
+
+.dashboard{
+  text-align: center;
+  vertical-align: middle;
+    display: flex;
+    flex-direction: row;
+}
+
+.card {
+    border: 1px solid #e5e5e5;
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    padding: 1rem;
+    margin: 25px;
+    width: 25vw;
+    height: 50vh;
+    color: #22201F;
+  }
+
+.inferior{
+    height: 35vh;
+  }
+
+  .calendar{
+    width: 50vw;
+  }
+
+  .grafica{
+    width: 45vW;
+  }
+
+  .title{
+    padding-top: 1rem;
+    margin-bottom: 0.2rem;
+    color: #FB8B24;
+  }
+
+  #clock {
+    font-size: 84px;
+    padding-top: 45px;
+  }
+
+  .icono{
+    margin-top: 55px;
+    width: 75px;
+    height: 75px;
+  }
+
+  .temp{
+    font-size: 84px;
+    padding-top: 45px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 25px;
+  }
+  th, td {
+    text-align: center;
+    padding: 10px;
+  }
+  td.today {
+    color: #E36414;
+    border: 1px solid #E36414;
+    background-color: #F2BF92;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    display: inline-block;
+    clear: both;
+  }
+  td.passed {
+    text-decoration: line-through;
+    color: rgb(110, 110, 110);
+  }
+
+  .month-header {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 50px;
+  }
+
+  .barometer {
+    background-color: #ddd;
+    height: 200px;
+    width: 30px;
+    position: relative;
+  }
+
+  .mercury {
+    background-color: #ff0000;
+    height: 0;
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    transition: height 1s ease-in-out;
+  }
+
+  .barometer:hover .mercury {
+    height: 70%;
+  }
