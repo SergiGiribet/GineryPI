@@ -35,7 +35,7 @@
             <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415z"/>
             <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1z"/>
           </svg></span>
-			<div class="temp" id="tempActual"><sup>&deg;</sup></div>
+			<div class="temp tempActual" id="tempActual"><sup>20 C&deg;</sup></div>
 		</div>
 		<div class="card calendar"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" color="blue" fill="currentColor" class="bi bi-calendar-week icono" viewBox="0 0 16 16">
             <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
@@ -109,8 +109,8 @@
 		<div class="card inferior">
 			<div class="box">
 			<div class="percent">
-			  <div class="num">
-				<p id="tempMax"><span>º</span></p>
+			  <div class="temp">
+				<p id="tempMax"><span>25 Cº</span></p>
 			  </div>
 			</div>
 		  </div>
@@ -119,14 +119,14 @@
 		<div class="card inferior">
 			<div class="box">
 			<div class="percent">
-			  <div class="num">
-				<p id="tempMin"><span>º</span></p>
+			  <div class="temp">
+				<p id="tempMin"><span>18 Cº</span></p>
 			  </div>
 			</div>
 		  </div>
 		</div>
 		
-		<div class="card inferior"><p id="pressio">Pressió</p></div>
+		<div class="card inferior temp"><p id="pressio">900 h/pa</p></div>
 		<div class="card inferior grafica"><canvas id="myChart"><script>
 			fetch('http://raspberrypi.local/data.json')
     .then((response) => response.json())

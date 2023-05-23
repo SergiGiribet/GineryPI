@@ -50,8 +50,12 @@
   }
 
   .temp{
-    font-size: 84px;
-    padding-top: 45px;
+    font-size: 60px;
+    padding-top: 120px;
+  }
+
+  .tempActual{
+    padding-top: -80px !important;
   }
 
   table {
