@@ -3,15 +3,6 @@
 
 ## Índex
 
-1. Idea I desenvolupament
-2. Comencem
-3. Distribució de la feina
-4. Efecte Manero
-5. Fonts
-6. Agraïments
-7. Conclusió del Projecte
---- 
-
 <details>
 <summary><strong>01 Idea I desenvolupament</strong></summary>
 
@@ -85,4 +76,12 @@ Debian és un sistema operatiu obert i cada persona pot contribuir per a millora
 ##### HTML + CSS
 Són els principals llenguatges de programació web, l'ús principal és crear pàgines i aplicacions web. La diferència crucial entre tots dos és que l'HTML s'utilitza per a la creació de les pàgines web i amb el CSS podem donar-li estil i format.
 
+---
 </details>
+
+3. Distribució de la feina
+4. Efecte Manero
+5. Fonts
+6. Agraïments
+7. Conclusió del Projecte
+--- 
